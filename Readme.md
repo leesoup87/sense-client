@@ -1,6 +1,6 @@
 # Cochlear.ai Sense (beta version)
 
-## Getting Started 
+## Getting Started
 
 **Cochlear.ai** offers audio cognition systems as a service. Our cloud API service *Cochlear.ai Sense* enables developers to analyze audio contents by extracting non-verbal information. It is based on gRPC framework and python, java, node.js are supported in beta version.
 
@@ -42,15 +42,14 @@ In other cases, the subtask will be ignored.
 
 ## Quick Tutorial
 
-In this short tutorial, we introduce **Cochlear.ai Sense API** and go through the process of analyzing your first audio contents.
+In this short tutorial, we introduce *Cochlear.ai Sense* API and go through the process of analyzing your first audio content.
 
 
 
 ### Step 1. Get your Free API key
+Every API access is managed with API key. If you are a first time user, visit http://cochlear.ai/beta-subscription/ to get your free API key.
 
-All API access is managed with API key. If you are a first time user, visit http://cochlear.ai/beta-subscription/ to get your free API key.
-
-Every API key will be limited to 700 calls (per a file input method) and 10 minutes (per a streaming input method) a day. If you need extra quota, email support@cochlear.ai to get more quota with brief explanation.
+All API keys are limited to 700 audio files and 10 minute audio streams per method per day. If you need extra quota, email support@cochlear.ai to get more quota with brief explanation.
 
 ```
 Daily Quota : 700 calls per method (audio file) / 10 minutes per method (audio stream)
@@ -64,39 +63,46 @@ git clone https://github.com/cochlearai/sense-client
 ```
 
 
-### Step 3. Setup your environment (Ubuntu)
+### Step 3. Setup your environment (python)
+This and the next steps assume the python 2.7 environment running on Ubuntu. If you are using java or node.js, please refer to the following documents:
+(Java) https://github.com/cochlearai/sense-client/blob/master/JavaClient/Readme.md
+(Node.js) https://github.com/cochlearai/sense-client/tree/master/NodeJS/Readme.md
 
-- python 2.7 version
-- pip is required
 
-```
-wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py
-```
-or you can use apt-get command
-```
-apt-get install python-pip
-```
-
-- portaudio is required for streaming api
+#### Install portaudio
+This is required only for streaming methods.
 ```
 apt install portaudio19-dev
 ```
 
 
-#### (Optional) If you want to set pip environment on virtualenv
+#### Install pip
+Run the following codes.
+
+```
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+```
+As an alternative, you can also use apt-get command
+```
+apt-get install python-pip
+```
+To install the dependencies presented below, pip version 10.0.1 or later is recommended.
+
+
+#### (Optional) Install virtualenv
+If you want to setup the python environment on virtualenv, run the following codes.
 
 ```
 pip install virtualenv
 virtualenv venv 
 source venv/bin/activate
 ```
-You can verify that the virtual environment is enabled through the prefix *(venv)* in the terminal window.
-You must use pip within this venv
+You can verify whether the virtual environment is successfully activated with the prefix *(venv)* in the terminal window.
 
 
-#### Common Settings for Development&runtime environment on base OS
-pip 10 or latest version is recommended for installing dependancies.
+#### Install python libraries
+Run the following codes.
 ```
 pip install --upgrade pip
 pip install --no-cache-dir -r requirements.txt
@@ -105,28 +111,16 @@ pip install --no-cache-dir -r requirements.txt
 
 ### Step 4. Making your gRPC call
 
-The prediction results of all methods except for 'music_key' and 'music_tempo' are based on 1 second decision unit. The size of the input audio file is NOT limited; however we recommend using the files under 100MB in size.
+The predicted values are given in units of one second for all methods except for 'music_key' and 'music_tempo'. The size of the input audio file is recommended not to exceed but not limited to 100MB.
 
-Please note that the type of results are not determined by the input audio but by the method you call. For example, if you call a music analysis method with a speech content, the model will return the predictions that the music analysis model knows about. Please be aware of the kind of the audio input you are usingfunctionsfunctionsfunctionsfunctionsfunctions.
+Note that the type of the result is not determined by the input audio but by the method you call. For example, if you call a music analysis method with a speech data, the model will regard the input as a music signal and make predictions based on its knowledge about the music. Please be aware of the kind of the audio inputs you are using.
 
-#### Example of Request
+#### Example
 
-For more examples, please refer /example/example.py and simple_example.py.
-
-```
-import sys
-sys.path.append('path-of-cochlearai-package')
-from cochlearai.client.sense import CochlearaiSenseApp
-
-apikey = 'your-api-key'
-
-app = CochlearaiSenseApp()
-sensers = app.get_sensers()
-
-filename = 'example_event.mp3'
-task = 'event'
-subtask = 'babycry'
-res = sensers.predict(apikey, filename, task, subtask)
+For the examples of  and , please refer ./examples/example.py and ./examples/example_streaming.py. (to be updated)
+After inserting your API key to the example code, run the code below.
+```bat
+python ./examples/example.py
 ```
 
 
