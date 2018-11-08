@@ -1,48 +1,68 @@
-# Cochlear.ai Sense (alpha version)
+# Cochlear.ai Sense (beta version)
 
 ## Getting Started 
 
-**Cochlear.ai** offers audio cognition systems as a service. Sense API enables developers to analyze audio contents by extracting non-verbal information. It is based on gRPC framework and only python is supported in alpha version.
+**Cochlear.ai** offers audio cognition systems as a service. Sense API enables developers to analyze audio contents by extracting non-verbal information. It is based on gRPC framework and only python, java, node.js are supported in beta version.
 
-Response speed of the API is quite slow at the moment which will be our first issue to be solved during alpha phase. If you need any help or support, please do not hesitate to send us email at support@cochlear.ai.
+If you need any help or support, please do not hesitate to send us email at support@cochlear.ai.
 
 Send us audio samples that are not working properly or tell us any issue during  development would be greatly appreciated. Thank you for your participation!
 
 
-### Available task
 
+### Available tasks
+
+- File input methods
 ```
-        'key' (music key detection)
-        'tempo' (music tempo detection)
-        'genre' (music genre detection)
-        'mood' (music mood estimation)
-        'gender' (speech gender classification)
-        'mso' (music/speech/others classification)
-        'event' (audio event detection)
-    
-        in case of 'event', the following subtasks are available.
-            ('babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring')
-            if task is not 'event', subtask input will be ignored.
+- 'speech_detector' (speech activity detection)
+- 'music_detector' (music activity detection)
+- 'age_gender' (age and gender detection)
+- 'music_genre' (music genre detection)
+- 'music_mood' (music mood estimation)
+- 'music_tempo' (music tempo detection)
+- 'music_key' (music key detection)
+- 'event' (audio event detection)
+
+in case of 'event', the following subtasks are available.
+('babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring', 'glass')
+if task is not 'event', subtask input will be ignored.
 ```
+
+- Streaming input methods
+```
+- 'speech_detector_stream' (speech activity detection)
+- 'music_detector_stream' (music activity detection)
+- 'age_gender_stream' (age and gender detection)
+- 'music_genre_stream' (music genre detection)
+- 'music_mood_stream' (music mood estimation)
+- 'event_stream' (audio event detection)
+
+in case of 'event', the following subtasks are available.
+('babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring', 'glass')
+if task is not 'event', subtask input will be ignored.
+```
+
+
 
 ## Quick Tutorial
 
-In this short tutorial, we introduce **Cochlear.ai Sense API** and go through the process of analyzing your first audio contents.
+In this short tutorial, we introduce **Cochlear.ai Sense API** and go through the process of analyzing your first audio contents. At the moment, we only provide the tutorial for python environment.
 
 
 
 ### Step 1. Get your Free API key
 
-All API access is under API key and if you are first time user, ask support@cochlear.ai to get your free API key.
+All API access is under API key and if you are first time user, visit http://cochlear.ai/beta-subscription/ to get your free API key.
 
-Every API key will be limited to 100 calls per method a day and expired after 30 days. If you need extra quota, email support@cochlear.ai to get more quota with brief explanation.
+Every API key will be limited to 700 calls (per a file input method) and 10 minutes (per a streaming input method) a day. If you need extra quota, email support@cochlear.ai to get more quota with brief explanation.
 
-
-        Daily Quota : 100 calls per method (3000 calls per method during alpha testing)
+```
+Daily Quota : 700 calls per method (audio file) / 10 minutes per method (audio stream)
+```
 
 
 ### Step 2. Clone this repository
-This repository contains the library for the *Cochlear Sense API* call. Download or copy for use.
+This repository contains the libraries used for the *Cochlear Sense API* call. Download or copy to use.
 ```
 git clone https://github.com/cochlearai/sense-client
 ```
@@ -52,7 +72,6 @@ git clone https://github.com/cochlearai/sense-client
 
 - python 2.7 version
 - pip is required
-- portaudio is required for streaming api
 
 ```
 wget https://bootstrap.pypa.io/get-pip.py
@@ -63,16 +82,18 @@ or you can use apt-get command
 apt-get install python-pip
 ```
 
-install portaudio 
+- portaudio is required for streaming api
 ```
 apt install portaudio19-dev
 ```
+
+
 #### (Optional) If you want to set pip environment on virtualenv
 
 ```
 pip install virtualenv
 virtualenv venv 
-. venv/bin/activate
+source venv/bin/activate
 ```
 You can verify that the virtual environment is enabled through the prefix *(venv)* in the terminal window.
 You must use pip within this venv
@@ -88,9 +109,9 @@ pip install --no-cache-dir -r requirements.txt
 
 ### Step 4. Making your gRPC call
 
-Every prediction except music analysis ('key', 'tempo', 'genre') is based on 1 second decision unit. Your audio input should not be exceeded by 30 seconds length and 4MB size.
+The prediction results of all methods except for 'music_key' and 'music_tempo' are based on 1 second decision unit. The size of the input audio file is NOT limited; however we recommend using the files under 100MB in size.
 
-The prediction works only what model you run the input through. For example, if you call the music analysis method with speech content, models will returns the predictions that music analysis model knows about.
+Please note that the type of results are not determined by the input audio but by the method you call. For example, if you call a music analysis method with a speech content, the model will return the predictions that the music analysis model knows about. Please be aware of the kind of the audio input you are usingfunctionsfunctionsfunctionsfunctionsfunctions.
 
 #### Example of Request
 
