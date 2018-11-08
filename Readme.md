@@ -2,11 +2,11 @@
 
 ## Getting Started 
 
-**Cochlear.ai** offers audio cognition systems as a service. Sense API enables developers to analyze audio contents by extracting non-verbal information. It is based on gRPC framework and only python, java, node.js are supported in beta version.
+**Cochlear.ai** offers audio cognition systems as a service. Our cloud API service *Cochlear.ai Sense* enables developers to analyze audio contents by extracting non-verbal information. It is based on gRPC framework and python, java, node.js are supported in beta version.
 
-If you need any help or support, please do not hesitate to send us email at support@cochlear.ai.
+If you need any help or support, please do not hesitate to send us an email at support@cochlear.ai.
 
-Send us audio samples that are not working properly or tell us any issue during  development would be greatly appreciated. Thank you for your participation!
+Please send us the audio samples that are not working properly with our API and tell us any issues you face during the development. It would be greatly appreciated. Thank you for your participation!
 
 
 
@@ -22,10 +22,6 @@ Send us audio samples that are not working properly or tell us any issue during 
 - 'music_tempo' (music tempo detection)
 - 'music_key' (music key detection)
 - 'event' (audio event detection)
-
-in case of 'event', the following subtasks are available.
-('babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring', 'glass')
-if task is not 'event', subtask input will be ignored.
 ```
 
 - Streaming input methods
@@ -36,23 +32,23 @@ if task is not 'event', subtask input will be ignored.
 - 'music_genre_stream' (music genre detection)
 - 'music_mood_stream' (music mood estimation)
 - 'event_stream' (audio event detection)
-
-in case of 'event', the following subtasks are available.
-('babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring', 'glass')
-if task is not 'event', subtask input will be ignored.
 ```
+
+For 'event' and 'event_stream', the following subtasks are available.
+('babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring', 'glass')
+In other cases, the subtask will be ignored.
 
 
 
 ## Quick Tutorial
 
-In this short tutorial, we introduce **Cochlear.ai Sense API** and go through the process of analyzing your first audio contents. At the moment, we only provide the tutorial for python environment.
+In this short tutorial, we introduce **Cochlear.ai Sense API** and go through the process of analyzing your first audio contents.
 
 
 
 ### Step 1. Get your Free API key
 
-All API access is under API key and if you are first time user, visit http://cochlear.ai/beta-subscription/ to get your free API key.
+All API access is managed with API key. If you are a first time user, visit http://cochlear.ai/beta-subscription/ to get your free API key.
 
 Every API key will be limited to 700 calls (per a file input method) and 10 minutes (per a streaming input method) a day. If you need extra quota, email support@cochlear.ai to get more quota with brief explanation.
 
