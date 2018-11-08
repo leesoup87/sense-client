@@ -57,9 +57,9 @@ Daily Quota : 700 calls per method (audio file) / 10 minutes per method (audio s
 
 
 ### Step 2. Clone this repository
-This repository contains the libraries used for the *Cochlear Sense API* call. Download or copy to use.
+This repository contains the libraries required to utilize *Cochlear Sense API*. Copy with the code below or manually download to use.
 ```
-git clone https://github.com/cochlearai/sense-client
+$ git clone https://github.com/cochlearai/sense-client
 ```
 
 
@@ -69,16 +69,15 @@ This and the next steps assume the python 2.7 environment running on Ubuntu. If 
 (Node.js) https://github.com/cochlearai/sense-client/tree/master/NodeJS/Readme.md
 
 
-#### Install portaudio
+- Install portaudio
 This is required only for streaming methods.
 ```
-apt install portaudio19-dev
+$ apt install portaudio19-dev
 ```
 
 
-#### Install pip
+- Install pip
 Run the following codes.
-
 ```
 wget https://bootstrap.pypa.io/get-pip.py
 python get-pip.py
@@ -90,9 +89,8 @@ apt-get install python-pip
 To install the dependencies presented below, pip version 10.0.1 or later is recommended.
 
 
-#### (Optional) Install virtualenv
+- (Optional) Install virtualenv
 If you want to setup the python environment on virtualenv, run the following codes.
-
 ```
 pip install virtualenv
 virtualenv venv 
@@ -101,7 +99,7 @@ source venv/bin/activate
 You can verify whether the virtual environment is successfully activated with the prefix *(venv)* in the terminal window.
 
 
-#### Install python libraries
+- Install python libraries
 Run the following codes.
 ```
 pip install --upgrade pip
@@ -115,56 +113,64 @@ The predicted values are given in units of one second for all methods except for
 
 Note that the type of the result is not determined by the input audio but by the method you call. For example, if you call a music analysis method with a speech data, the model will regard the input as a music signal and make predictions based on its knowledge about the music. Please be aware of the kind of the audio inputs you are using.
 
-#### Example
+- Example codes
 
-For the examples of  and , please refer ./examples/example.py and ./examples/example_streaming.py. (to be updated)
+For the examples of the file input methods and the streaming methods, please refer to ./examples/example.py and ./examples/example_streaming.py, respectively. (to be updated)
+
 After inserting your API key to the example code, run the code below.
-```bat
-python ./examples/example.py
+```
+$ python ./examples/example.py
 ```
 
+- Examples of Response (to be updated)
+The following examples assume that the input is an audio file with a length of 3 seconds or an audio stream of 1 second.
+
+1. speech_detector
+(file) {"speech": "speech", "probability": [0.66, 0.78, 0.51]}
+(stream) {"speech": "speech", "probability": [0.66]}
+
+2. music_detector
+(file) {"music": "music", "probability": [0.66, 0.78, 0.51]}
+(stream) {"music": "music", "probability": [0.66]}
+
+3. age_gender
+(file) {{"agender": "child", "probability": [0.8, 0.78, 0.82]},
+        {"agender": "male", "probability": [0.05, 0.06, 0.04]},
+        {"agender": "female", "probability": [0.15, 0.16, 0.14]}}
+(stream) {{"agender": "child", "probability": [0.8]},
+          {"agender": "male", "probability": [0.05]},
+          {"agender": "female", "probability": [0.15]}}
+
+4. music_genre
+(file) {"genre": ["Rock", "Hip-hop", "Jazz"],  "probability": [0.616, 0.254, 0.112]}
+(stream) {"genre": ["Rock", "Hip-hop", "Jazz"],  "probability": [0.616, 0.254, 0.112]}
+
+5. music_mood
+{"arousal": 0.2952, "valence": -0.2254}
+
+6. music_tempo
+(file) {"tempo": [72.0, 36.0], "probability": [0.881, 0.119]}
+(stream) N/A
+
+7. music_key
+(file) {"key": ["Gb"], "probability": [0.752]}
+(stream) N/A
+
+8. event
+(file) {"event": ["babycry"],  "probability": [0.803, 0.911, 0.188]}
+(stream) {"event": ["babycry"],  "probability": [0.803]}
 
 
-#### Example of Response
+## Key features of beta version
+Our beta version API includes the following major updates compared to the alpha version.
 
-- Audio Event Detection
-
-        {u'babycry': [0.884, 1.0, 0.126, 0.0, 0.0, 0.058, 0.416, 0.948, 0.782, 0.013]}
-        
-- Audio Music/Speech/Others (MSO) Classification
-
-        {u'music': [0.0, 0.0, 0.0, 0.001, 0.001, 0.086, 0.0, 0.0, 0.001, 0.008],
-         u'others': [1.0, 1.0, 1.0, 0.998, 1.0, 0.965, 1.0, 1.0, 1.0, 0.865],
-         u'speech': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004]}
-
-- Speech Gender Detection and Classification
-
-        {u'male': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-         u'female': [0.0, 0.0, 0.0, 1.0, 1.0, 0.257, 0.0, 0.0, 0.173, 0.935]}
-
-- Music Key Estimation
-
-        {u'key': u'Abm'}
-
-- Music Tempo Estimation
-
-        {u'tempo1': 128.571, u'tempo2': 42.857}
-        
-- Music Genre Classification
-
-        {u’genre’: [u’Electronic’]}
-        
-- Music Mood Estimation
-
-        {u'arousal': [-0.035, 0.058, -0.028, 0.22, 0.099, -0.038, -0.089, -0.049, 0.084, -0.01],
-         u'valence': [0.01, 0.046, 0.006, 0.174, 0.068, 0.019, -0.01, -0.02, 0.092, -0.027]}
+- Improved Latency
+- Streaming input support
+- Example client codes of other languages (Java, Node.js)
+- Additional funcionalities
+    - Speech and music activity detection
+    - Age and gender detection
+- Additional sound event class (glass)
+- Improved performance
 
 
-
-
-## Updating components in alpha testing
-
-- HTTP referrers (REST API)
-- Improvement on API Latency 
-- Example client codes of other languages (C++, Java, Objective-c, cURL)
-- Updated inference model
