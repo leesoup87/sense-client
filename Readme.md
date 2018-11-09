@@ -81,11 +81,11 @@ $ git clone https://github.com/cochlearai/sense-client
 
 
 ### Step 3. Setup your environment (python)
-This and the next steps assume the python 2.7 environment running on Ubuntu. If you are using java or node.js, please refer to the following documents:
+This and the next steps assume the python 2.7 environment running on Ubuntu. If you are using java, please refer to the following documents:
 
 (Java) https://github.com/cochlearai/sense-client/blob/master/JavaClient/Readme.md
 
-(Node.js) https://github.com/cochlearai/sense-client/tree/master/NodeJS/Readme.md
+The tutorial for node.js is soon to be updated.
 
 
 - Install portaudio
