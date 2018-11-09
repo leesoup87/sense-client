@@ -146,12 +146,13 @@ Note that the type of the result is not determined by the input audio but by the
 
 - Example codes
 
-For the examples of the file input methods and the streaming methods, please refer to ./examples/example.py and ./examples/example_streaming.py, respectively. (to be updated)
+For the examples of the file input methods and the streaming methods, please refer to ./examples/example.py and ./examples/example_stream.py, respectively.
 
 After inserting your API key to the example code, run the code below.
 
 ```
 $ python ./examples/example.py
+$ python ./examples/example_stream.py
 ```
 
 - Examples of Response
