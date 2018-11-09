@@ -1,4 +1,4 @@
-# Cochlear.ai sense Java Client (alpha version)
+# Cochlear.ai sense Java Client (Beta version)
 
 ## Importing sdk into your java project
 
