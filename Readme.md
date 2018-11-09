@@ -14,24 +14,24 @@ Please send us the audio samples that are not working properly with our API and 
 
 - File input methods
 
-> - 'speech_detector' (speech activity detection)
-> - 'music_detector' (music activity detection)
-> - 'age_gender' (age and gender detection)
-> - 'music_genre' (music genre detection)
-> - 'music_mood' (music mood estimation)
-> - 'music_tempo' (music tempo detection)
-> - 'music_key' (music key detection)
-> - 'event' (audio event detection)
+> 'speech_detector' (speech activity detection)
+> 'music_detector' (music activity detection)
+> 'age_gender' (age and gender detection)
+> 'music_genre' (music genre detection)
+> 'music_mood' (music mood estimation)
+> 'music_tempo' (music tempo detection)
+> 'music_key' (music key detection)
+> 'event' (audio event detection)
 
 
 - Streaming input methods
 
-> - 'speech_detector_stream' (speech activity detection)
-> - 'music_detector_stream' (music activity detection)
-> - 'age_gender_stream' (age and gender detection)
-> - 'music_genre_stream' (music genre detection)
-> - 'music_mood_stream' (music mood estimation)
-> - 'event_stream' (audio event detection)
+> 'speech_detector_stream' (speech activity detection)
+> 'music_detector_stream' (music activity detection)
+> 'age_gender_stream' (age and gender detection)
+> 'music_genre_stream' (music genre detection)
+> 'music_mood_stream' (music mood estimation)
+> 'event_stream' (audio event detection)
 
 
 For 'event' and 'event_stream', the following subtasks are available.
@@ -159,22 +159,22 @@ The following examples assume that the input is an audio file with a length of 3
 
 ##### 1. speech_detector
 ```
-(file) {"speech": "speech", "probability": [0.66, 0.78, 0.51]}
-(stream) {"speech": "speech", "probability": [0.66]}
+(file) {"speech": "speech", "probability": [0.662, 0.789, 0.515]}
+(stream) {"speech": "speech", "probability": 0.662}
 ```
 ##### 2. music_detector
 ```
-(file) {"music": "music", "probability": [0.66, 0.78, 0.51]}
-(stream) {"music": "music", "probability": [0.66]}
+(file) {"music": "music", "probability": [0.662, 0.789, 0.515]}
+(stream) {"music": "music", "probability": 0.662}
 ```
 ##### 3. age_gender
 ```
-(file) {{"agender": "child", "probability": [0.8, 0.78, 0.82]},
-        {"agender": "male", "probability": [0.05, 0.06, 0.04]},
-        {"agender": "female", "probability": [0.15, 0.16, 0.14]}}
-(stream) {{"agender": "child", "probability": [0.8]},
-        {"agender": "male", "probability": [0.05]},
-        {"agender": "female", "probability": [0.15]}}
+(file) [{"agender": "child", "probability": [0.856, 0.007, 0.031]}, 
+        {"agender": "male", "probability": [0.115, 0.716, 0.703]}, 
+        {"agender": "female", "probability": [0.029, 0.278, 0.266]}]
+(stream) [{"agender": "child", "probability": 0.856}, 
+          {"agender": "male", "probability": 0.115}, 
+          {"agender": "female", "probability": 0.029}]
 ```
 ##### 4. music_genre
 ```
@@ -192,11 +192,11 @@ The following examples assume that the input is an audio file with a length of 3
 ```
 ##### 7. music_key
 ```
-(file) {"key": ["Gb"], "probability": [0.752]}
+(file) {"key": ["Gb"], "probability": 0.752}
 (stream) N/A
 ```
 ##### 8. event
 ```
 (file) {"event": ["babycry"],  "probability": [0.803, 0.911, 0.188]}
-(stream) {"event": ["babycry"],  "probability": [0.803]}
+(stream) {"event": ["babycry"],  "probability": 0.803}
 ```
