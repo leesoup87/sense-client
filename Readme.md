@@ -166,8 +166,8 @@ The following examples assume that the input is an audio file with a length of 3
 ```
 ##### 2. music_detector
 ```
-(file) {"music": "music", "probability": [0.662, 0.789, 0.515]}
-(stream) {"music": "music", "probability": 0.662}
+(file) {"result": [{"music": [0.662, 0.789, 0.515]}]}
+(stream) {"result": [{"music": [0.662]}]}
 ```
 ##### 3. age_gender
 ```
