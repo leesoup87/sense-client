@@ -14,15 +14,15 @@ Please send us the audio samples that are not working properly with our API and 
 
 - File input methods
 
-> 'speech_detector' (speech activity detection)
-
-> 'music_detector' (music activity detection)
-> 'age_gender' (age and gender detection)
-> 'music_genre' (music genre detection)
-> 'music_mood' (music mood estimation)
+>   - 'speech_detector' (speech activity detection)
+>   - 'music_detector' (music activity detection)
+> - 'age_gender' (age and gender detection)
+> - 'music_genre' (music genre detection)
+> - 'music_mood' (music mood estimation)
 > 'music_tempo' (music tempo detection)
-> 'music_key' (music key detection)
-> 'event' (audio event detection)
+
+> 1. 'music_key' (music key detection)
+> 2. 'event' (audio event detection)
 
 
 - Streaming input methods
