@@ -138,7 +138,7 @@ $ pip install --no-cache-dir -r requirements.txt
 ```
 
 
-### Step 4. Making your gRPC call
+### Step 4. Making your gRPC call (python)
 
 The predicted values are given in units of one second for all methods except for 'music_key' and 'music_tempo'. The size of the input audio file is recommended not to exceed but not limited to 100MB.
 
@@ -154,7 +154,7 @@ After inserting your API key to the example code, run the code below.
 $ python ./examples/example.py
 ```
 
-- Examples of Response (to be updated)
+- Examples of Response
 
 The following examples assume that the input is an audio file with a length of 3 seconds or an audio stream of 1 second.
 
