@@ -29,11 +29,9 @@ Please send us the audio samples that are not working properly with our API and 
 > 9. 'speech_detector_stream' (speech activity detection)
 > 10. 'music_detector_stream' (music activity detection)
 > 11. 'age_gender_stream' (age and gender detection)
-> 'music_genre_stream' (music genre detection)
->
-> 'music_mood_stream' (music mood estimation)
->
-> 'event_stream' (audio event detection)
+> 12. 'music_genre_stream' (music genre detection)
+> 13. 'music_mood_stream' (music mood estimation)
+> 14. 'event_stream' (audio event detection)
 
 
 For 'event' and 'event_stream', the following subtasks are available.
