@@ -161,44 +161,45 @@ The following examples assume that the input is an audio file with a length of 3
 
 ##### 1. speech_detector
 ```
-(file) {"speech": "speech", "probability": [0.662, 0.789, 0.515]}
-(stream) {"speech": "speech", "probability": 0.662}
+(file)   {"result": [{"speech": [0.253, 0.662, 0.515]}]}
+(stream) {"result": [{"speech": [0.253]}]}
 ```
 ##### 2. music_detector
 ```
-(file) {"result": [{"music": [0.662, 0.789, 0.515]}]}
-(stream) {"result": [{"music": [0.662]}]}
+(file)   {"result": [{"music": [0.602, 0.789, 0.515]}]}
+(stream) {"result": [{"music": [0.602]}]}
 ```
 ##### 3. age_gender
 ```
-(file) [{"agender": "child", "probability": [0.856, 0.007, 0.031]}, 
-        {"agender": "male", "probability": [0.115, 0.716, 0.703]}, 
-        {"agender": "female", "probability": [0.029, 0.278, 0.266]}]
-(stream) [{"agender": "child", "probability": 0.856}, 
-          {"agender": "male", "probability": 0.115}, 
-          {"agender": "female", "probability": 0.029}]
+(file)   {"result": [{"age/gender": "child", "probability": [0.042, 0.045, 0.132]}, 
+                     {"age/gender": "male", "probability": [0.219, 0.262, 0.312]}, 
+                     {"age/gender": "female", "probability": [0.739, 0.693, 0.556]}]}
+(stream) {"result": [{"age/gender": "child", "probability": [0.042]}, 
+                     {"age/gender": "male", "probability": [0.219]}, 
+                     {"age/gender": "female", "probability": [0.739]}]}
 ```
 ##### 4. music_genre
 ```
-(file) {"genre": ["Rock", "Hip-hop", "Jazz"],  "probability": [0.616, 0.254, 0.112]}
-(stream) {"genre": ["Rock", "Hip-hop", "Jazz"],  "probability": [0.616, 0.254, 0.112]}
+(file)   {"result": [{"genre": ["Alternative", "New-Age"], "probability": [0.658, 0.341]}]}
+(stream) {"result": [{"genre": ["Alternative", "New-Age"], "probability": [0.658, 0.341]}]}
 ```
 ##### 5. music_mood
 ```
-{"arousal": 0.2952, "valence": -0.2254}
+(file)   {"result": [{"arousal": 0.103, "valence": -0.139}]}
+(stream) {"result": [{"arousal": 0.103, "valence": -0.139}]}
 ```
 ##### 6. music_tempo
 ```
-(file) {"tempo": [72.0, 36.0], "probability": [0.881, 0.119]}
+(file)   {"result": [{"tempo": [72.0, 36.0], "probability": [0.881, 0.119]}]}
 (stream) N/A
 ```
 ##### 7. music_key
 ```
-(file) {"key": ["Gb"], "probability": 0.752}
+(file)   {"result": [{"key": "Gb", "probability": 0.752}]}
 (stream) N/A
 ```
 ##### 8. event
 ```
-(file) {"event": ["babycry"],  "probability": [0.803, 0.911, 0.188]}
-(stream) {"event": ["babycry"],  "probability": 0.803}
+(file)   {"result": [{"event": "dogbark", "probability": [0.803, 0.911, 0.188]}]}
+(stream) {"result": [{"event": "dogbark", "probability": [0.803]}]}
 ```
