@@ -36,10 +36,11 @@ Please send us the audio samples that are not working properly with our API and 
 
 For 'event' and 'event_stream', the following subtasks are available.
 
-> 'babycry', 'carhorn', 'cough', 'dogbark', 'siren', 'snoring', 'glass'
+> 'babycry', 'carhorn', 'cough', 'dogbark', 'glassbreak', 'siren', 'snoring'
 
 In other cases, the subtask will be ignored.
 
+***
 
 ## Key features of beta version
 
@@ -51,10 +52,10 @@ Our beta version API includes the following major updates compared to the alpha 
 - Additional funcionalities
     - Speech and music activity detection
     - Age and gender detection
-- Additional sound event class (glass)
+- Additional sound event class (glassbreak)
 - Improved performance
 
-
+***
 
 ## Quick Tutorial
 
@@ -65,7 +66,7 @@ In this short tutorial, we introduce *Cochlear.ai Sense* API and go through the 
 ### Step 1. Get your Free API key
 Every API access is managed with API key. If you are a first time user, visit http://cochlear.ai/beta-subscription/ to get your free API key.
 
-All API keys are limited to 700 audio files and 10 minute audio streams per method per day. If you need extra quota, email support@cochlear.ai to get more quota with brief explanation.
+All API keys are limited to 700 audio files and 10 minute audio streams per method per day.
 
 
 > Daily Quota : 700 calls per method (audio file) / 10 minutes per method (audio stream)
@@ -156,6 +157,7 @@ $ python ./examples/example.py
 - Examples of Response (to be updated)
 
 The following examples assume that the input is an audio file with a length of 3 seconds or an audio stream of 1 second.
+
 
 ##### 1. speech_detector
 ```
